@@ -1,3 +1,6 @@
+# Youtube Video link - https://youtu.be/q70aM7p1eg4
+# Github link - https://github.com/whosthemaan/Dijkstra_Path_Planning
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
