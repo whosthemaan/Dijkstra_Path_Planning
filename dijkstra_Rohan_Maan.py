@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
 from matplotlib.patches import Polygon
 from Func import  check_obstacle, dijkstra, get_shapes
-import os
 
 def init():
     scatter_plot.set_offsets([])
@@ -66,10 +65,4 @@ if __name__ == "__main__":
         axis.add_patch(index)
 
     animator = FuncAnimation(fig, animation_func, frames = (len(visited)+len(path)) ,fargs=[len(visited)], interval=0.01, repeat=False, blit=True)
-    print("Saving animation, Please wait for sometime. Thanks. :)")
-    gif_writer = PillowWriter(fps=60)
-    animator.save('video.gif', writer=gif_writer)
     plt.show()
-
-    
-    
