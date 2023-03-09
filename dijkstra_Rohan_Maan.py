@@ -28,7 +28,7 @@ if __name__ == "__main__":
         source = input()
         source_x = int(source.split(",")[0])
         source_y = int(source.split(",")[1])
-
+            
         print("Enter destination points as X,Y :")
         destination = input()
         destination_x = int(destination.split(",")[0])
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         if(check_obstacle([source_x, source_y]) and check_obstacle([destination_x, destination_y])):
             break
         else:
-            print("Please enter valid input :")
+            print("Please enter valid Input")
             continue
 
     source = (source_x, source_y)

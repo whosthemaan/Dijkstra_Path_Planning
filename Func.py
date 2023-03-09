@@ -49,8 +49,8 @@ triangle3_clearance = [455, 245]
 def get_line_equation(p1, p2):
     x1, y1 = p1
     x2, y2 = p2
-    if x2==x1:
-        return [x1]
+    # if x2==x1:
+    #     return [x1]
     slope =(y2 - y1)/(x2 - x1)
     intercept = y1-(slope*x1)
     return [slope, intercept]
@@ -74,16 +74,15 @@ def inside_rectangle(point):
 def inside_hexagon(point):
     x, y = point
     equation1 = get_line_equation(hexagon1_clearance, hexagon2_clearance)
-    l1_flag = y - equation1[0]*x - equation1[1]<=0
+    l1_flag = y - equation1[0]*x - equation1[1]>=0
     l2_flag = x<=hexagon2_clearance[0]
     equation3 = get_line_equation(hexagon3_clearance, hexagon4_clearance)
-    l3_flag = y - equation3[0]*x - equation3[1]>=0
+    l3_flag = y - equation3[0]*x - equation3[1]<=0
     equation4 = get_line_equation(hexagon4_clearance, hexagon5_clearance)
-    l4_flag = y - equation4[0]*x - equation4[1]>=0
-    equation5 = get_line_equation(hexagon5_clearance, hexagon6_clearance)
+    l4_flag = y - equation4[0]*x - equation4[1]<=0
     l5_flag = x>=hexagon5_clearance[0]
     equation6 = get_line_equation(hexagon6_clearance, hexagon1_clearance)
-    l6_flag = y - equation6[0]*x - equation6[1]<=0
+    l6_flag = y - equation6[0]*x - equation6[1]>=0
 
     flag = l1_flag and l2_flag and l3_flag and l4_flag and l5_flag and l6_flag
     return flag
