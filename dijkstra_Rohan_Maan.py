@@ -3,7 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation, PillowWriter
+from matplotlib.animation import FuncAnimation
 from matplotlib.patches import Polygon
 from Func import  check_obstacle, dijkstra, get_shapes
 

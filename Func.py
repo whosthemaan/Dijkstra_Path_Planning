@@ -1,4 +1,4 @@
-from queue import PriorityQueue
+import heapq as hq
 from matplotlib.patches import Polygon
 
 x_max = 600
@@ -49,8 +49,6 @@ triangle3_clearance = [455, 245]
 def get_line_equation(p1, p2):
     x1, y1 = p1
     x2, y2 = p2
-    # if x2==x1:
-    #     return [x1]
     slope =(y2 - y1)/(x2 - x1)
     intercept = y1-(slope*x1)
     return [slope, intercept]
@@ -135,11 +133,14 @@ def dijkstra(source, destination):
     OpenList[source] = 0
     visited=[]
 
-    queue = PriorityQueue()
-    queue.put((OpenList[source], source))
+    queue = []
+
+    hq.heappush(queue, (OpenList[source], source))
+    hq.heapify(queue)
+
     path = []
     while queue:
-        current_node = queue.get()[1]
+        current_node = hq.heappop(queue)[1]
         print("Current node : ", current_node)
         if current_node == destination:
             print("Found!!")
@@ -161,5 +162,6 @@ def dijkstra(source, destination):
                     if(node_cost<OpenList[current_node]):
                         OpenList[neighbor] = node_cost
                         ClosedList[neighbor] = current_node
-                queue.put((OpenList[neighbor], neighbor))
+                hq.heappush(queue, (OpenList[neighbor], neighbor))
+                hq.heapify(queue)
     return path, visited
